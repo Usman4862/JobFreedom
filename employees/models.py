@@ -56,7 +56,7 @@ class EmployeeProject(models.Model):
     project_name = models.CharField(max_length=60)
     project_description = models.TextField(max_length=500)
     project_link = models.URLField(max_length=200, null=True, blank=True)
-    project_file = models.FileField
+    project_file = models.FileField(upload_to='employee_project/project_file', blank=True, null=True)
 
     def __str__(self) :
         return f'{self.employee.username}'
