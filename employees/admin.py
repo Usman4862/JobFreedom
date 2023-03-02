@@ -1,6 +1,7 @@
 from django.contrib import admin
-from employees.models import Employeeprofile,EmployeeProject,Jobapplication
+from employees.models import EmployeeProfile, EmployeeProject, JobApplication
+
 # Register your models here.
-admin.site.register(Employeeprofile)
+admin.site.register(EmployeeProfile)
 admin.site.register(EmployeeProject)
-admin.site.register(Jobapplication)
+admin.site.register(JobApplication)

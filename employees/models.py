@@ -33,7 +33,7 @@ INTEREST_CHOICES= (
 
 
 
-class Employeeprofile(models.Model):
+class EmployeeProfile(models.Model):
    
    class ChoicesEmployeeSkills(models.TextChoices):
         PYTHON = 'PY', ('Python')
@@ -61,7 +61,7 @@ class EmployeeProject(models.Model):
     def __str__(self) :
         return f'{self.employee.username}'
 
-class Jobapplication(models.Model):
+class JobApplication(models.Model):
     SALARY_CHOICES = (
         ('50k','50k'),
         ('70k', '70k'),
