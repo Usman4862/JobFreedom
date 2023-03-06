@@ -71,4 +71,4 @@ class JobPost(models.Model):
             return f"{self.job_title}, {self.job_location}"
 
 
-
+# we will start soon
