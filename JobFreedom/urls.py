@@ -16,17 +16,20 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.shortcuts import render
 from django.urls import path
+from recruiters.views import browse_jobs, home, candidates, blogs, single_blog, contact
 
 
-def home(request):
-    return render(request, "skillhunt/index.html")
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home),
+    path('', home, name="home"),
+    path('browse/jobs/', browse_jobs, name="browse-jobs"),
+    path('candidates/', candidates, name="candidates"),
+    path('blogs/', blogs, name="blogs"),
+    path('single/blogs/', single_blog, name="single-blog"),
+    path('contact/', contact, name="contact"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
