@@ -17,7 +17,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from recruiters.views import browse_jobs, home, candidates, blogs, single_blog, contact
+from recruiters.views import  home, contact,post_job
+from employees.views import browse_jobs, candidates, blogs, single_blog,want_job
 
 
 
@@ -29,6 +30,8 @@ urlpatterns = [
     path('candidates/', candidates, name="candidates"),
     path('blogs/', blogs, name="blogs"),
     path('single/blogs/', single_blog, name="single-blog"),
+    path('jobpost/',post_job,name='post-job'),
+    path('wantjob/',want_job,name='want-job'),
     path('contact/', contact, name="contact"),
 ]
 if settings.DEBUG:
