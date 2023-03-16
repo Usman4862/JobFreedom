@@ -6,17 +6,8 @@ from .models import Recruiter
 def home(request):
     return render(request, "index.html")
 
-def browse_jobs(request):
-    return render(request, "browsejobs.html")
-
-def candidates(request):
-    return render(request, "candidates.html")
-
-def blogs(request):
-    return render(request, "blog.html")
-
-def single_blog(request):
-    return render(request, "blog-single.html")
+def post_job(request):
+    return render(request,'new-job-post.html')
 
 def contact(request):
     return render(request, "contact.html")

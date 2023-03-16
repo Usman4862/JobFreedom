@@ -53,6 +53,11 @@ class JobPost(models.Model):
         MALE = 'M', ('Male')
         FEMALE = 'F', ('Female')
         OTHERS = 'O', ('Others')
+    
+    class Jobtiming(models.TextChoices):
+        Full_Time = 'Full_Time',('Full Time')
+        Part_Time = 'Part_Time', ('Part Time')
+        Contract = 'Contract', ('Contract')
 
     recruiter = models.ForeignKey(Recruiter, on_delete=models.PROTECT)
     job_title = models.CharField(max_length=50, null=False, blank=False)
@@ -61,6 +66,7 @@ class JobPost(models.Model):
     number_of_positions = models.PositiveIntegerField()
     job_location = models.CharField(max_length=30)
     minimum_qualification_required = models.CharField(max_length=20, choices=MinQualificationRequired.choices)
+    job_timing = models.CharField(max_length=30, choices=Jobtiming.choices,default='Full Time')
     required_experience = models.CharField(max_length=30)
     minimum_salary = models.PositiveIntegerField()
     maximum_salary = models.PositiveIntegerField()

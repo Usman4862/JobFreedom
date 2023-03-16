@@ -46,6 +46,7 @@ class EmployeeProfile(models.Model):
    skills = models.CharField(max_length=200, choices=ChoicesEmployeeSkills.choices)
    education = models.CharField(max_length=100,choices=EDUCATION_CHOICES)
    about = models.TextField(max_length=500)
+   location = models.CharField(max_length=30, default='Pakistan')
    interest =models.CharField(max_length=100, choices=INTEREST_CHOICES)
 
    def __str__(self):
