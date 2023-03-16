@@ -27,7 +27,7 @@ class Recruiter(models.Model):
     education = models.CharField(max_length=30, choices=EducationChoices.choices)
     about = models.TextField(max_length=50, null=True, blank=True)
     total_employees_hired = models.PositiveIntegerField(blank=False, null=False)
-    company_name = models.CharField(max_length=15, null=False, blank=False)
+    company = models.ForeignKey("recruiters.Company", on_delete=models.PROTECT, null=True)
 
     def __str__(self) -> str:
         return self.user.username
@@ -70,11 +70,40 @@ class JobPost(models.Model):
     required_experience = models.CharField(max_length=30)
     minimum_salary = models.PositiveIntegerField()
     maximum_salary = models.PositiveIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
     salary_visibility = models.BooleanField(default=True)
     gender_prefrences = models.CharField(max_length=20, choices=GenderPreference.choices)
+    category = models.ForeignKey("recruiters.JobCategory", on_delete=models.PROTECT, related_name="jobs")
+    company = models.ForeignKey("recruiters.Company", on_delete=models.PROTECT, related_name='company', null=True)
 
     def __str__(self) -> str:
             return f"{self.job_title}, {self.job_location}"
 
 
+class JobCategory(models.Model):
+    name = models.CharField(max_length=100)
+    
+    class Meta:
+        verbose_name  = "Category"
+        verbose_name_plural = "Categories"
+        
 
+    def __str__(self) -> str:
+        return self.name
+
+
+class Company(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=200)
+    country = models.ForeignKey("recruiters.Country", on_delete=models.PROTECT)
+    
+    def __str__(self) -> str:
+        return self.name
+
+
+
+class Country(models.Model):
+    name = models.CharField(max_length=50)
+    
+    def __str__(self) -> str:
+        return self.name
